@@ -1,0 +1,85 @@
+extends ../../layouts/default.pug
+include ../../mixins/alert.pug
+
+block main
+  h1(class="mb-4 text-center") Chi tiết tài khoản người dùng
+  .user-details.container
+    .row
+      .col-md-4
+        img(src=user.avatar, alt="Avatar", class="img-fluid rounded-circle mb-3")
+      .col-md-8
+        .card
+          .card-header
+            h5 Thông tin cá nhân
+          .card-body
+            .row
+              .col-md-6
+                p
+                  strong Họ và tên: 
+                  span #{user.fullName}
+              .col-md-6
+                p
+                  strong Email: 
+                  span #{user.email}
+            .row
+              .col-md-6
+                p
+                  strong Số điện thoại: 
+                  span #{user.phone}
+              .col-md-6
+                p
+                  strong Trạng thái: 
+                  span(class=user.status == 'active' ? 'text-success' : 'text-danger') #{user.status}
+            .row
+              .col-md-6
+                p
+                  strong Ngày tạo: 
+                  span #{new Date(user.createdAt).toLocaleString()}
+              .col-md-6
+                p
+                  strong Ngày cập nhật: 
+                  span #{new Date(user.updatedAt).toLocaleString()}
+          .card-footer
+        
+  h3(class="mt-4 text-center") Chi tiết giỏ hàng
+  .cart-details.container
+    .row
+      .col-md-12
+        .card
+          .card-header
+            h5 Thông tin giỏ hàng
+          .card-body
+            .row
+              .col-md-6
+                p
+                  strong Mã giỏ hàng: 
+                  span #{cart._id.toString()}
+              .col-md-6
+                p
+                  strong Ngày tạo: 
+                  span #{new Date(cart.createdAt).toLocaleString()}
+            .row
+              .col-md-6
+                p
+                  strong Ngày cập nhật: 
+                  span #{new Date(cart.updatedAt).toLocaleString()}
+            .row
+              .col-md-6
+                p
+                  strong Số lượng sản phẩm: 
+                  span #{cart.products.length}
+
+            h5(class="mt-4") Danh sách sản phẩm trong giỏ hàng:
+            table(class="table table-bordered table-striped")
+              thead
+                tr
+                  th Mã sản phẩm
+                  th Số lượng
+              tbody
+                each products in cart.products
+                  tr
+                    td #{product.title}
+                    td #{products.quantity}
+  .row.mt-4
+    .col-md-12
+      a(href="/admin/user" class="btn btn-primary") Quay lại danh sách người dùng

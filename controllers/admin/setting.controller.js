@@ -1,0 +1,35 @@
+const SettingGeneral = require("../../models/setting-general.model");
+
+// [GET] /admin/settings/general
+module.exports.general = async (req, res) => {
+  const settingGeneral = await SettingGeneral.findOne({});
+
+  res.render("admin/pages/settings/general", {
+    pageTitle: "Cài đặt chung",
+    settingGeneral: settingGeneral,
+  });
+};
+
+// [PATCH] /admin/settings/general
+module.exports.generalPatch = async (req, res) => {
+  const settingGeneral = await SettingGeneral.findOne({});
+
+  if (settingGeneral) {
+    await SettingGeneral.updateOne(
+      {
+        _id: settingGeneral.id,
+      },
+      req.body
+    );
+    if (req.file && req.file.filename) {
+      req.body.thumbnail = `/uploads/${req.file.filename}`;
+    }
+  } else {
+    const record = new SettingGeneral(req.body);
+    await record.save();
+  }
+
+  req.flash("success", "Cập nhật thành công!");
+
+  res.redirect("back");
+};

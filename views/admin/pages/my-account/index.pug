@@ -1,0 +1,47 @@
+extends ../../layouts/default.pug
+
+block main
+    .container.mt-5
+        h1(class="mb-4 text-center") Thông tin cá nhân
+
+        .row.justify-content-center
+            .col-md-4
+                if(user.avatar)
+                    img(src=user.avatar width="150px" class="mb-3 rounded-circle border border-primary")
+                else 
+                    img(src="/admin/images/avatar.png" width="150px" class="mb-3 rounded-circle border border-primary")
+
+        .card
+            .card-body
+                .row
+                    .col-md-6
+                        if(user.fullName)
+                            p Họ tên: 
+                                b #{user.fullName}
+                    .col-md-6
+                        if(user.email)
+                            p Email: 
+                                b #{user.email}
+
+                .row
+                    .col-md-6
+                        if(user.phone)
+                            p Số điện thoại: 
+                                b #{user.phone}
+                    .col-md-6
+                        p
+                            span Trạng thái: 
+                            span
+                                b #{user.status === "active" ? "Hoạt động" : "Dừng hoạt động"}
+
+                .row
+                    .col-md-6
+                        if(role.title)
+                            p Phân quyền: 
+                                b #{role.title}
+
+                .text-center.mt-4
+                    a(
+                        href=`${prefixAdmin}/my-account/edit`
+                        class="btn btn-primary"
+                    ) Chỉnh sửa thông tin

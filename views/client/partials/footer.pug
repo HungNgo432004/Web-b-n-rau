@@ -1,0 +1,39 @@
+footer.footer.spad
+  .container
+    .row
+      .col-lg-3.col-md-6.col-sm-6
+        .footer__about
+          .footer__about__logo
+            a(href="/")
+              img(src="/images/logo.png", alt="FreshFarm")
+          ul
+            li Địa chỉ: 
+              | Học viện Công nghệ Bưu chính Viễn thông
+            li  Hotline: 
+              | 0967 202 939 (Hỗ trợ 24/7)
+            li  Email: 
+              | ngothehung44999@gmail.com
+      .col-lg-4.col-md-6.col-sm-6.offset-lg-1
+        .footer__widget
+          h6 Về OGANI
+          p
+            | OGANI là cửa hàng chuyên cung cấp rau củ quả và nông sản hữu cơ, được tuyển chọn kỹ lưỡng từ các nông trại sạch trên toàn quốc. Chúng tôi cam kết mang đến sản phẩm tươi mới mỗi ngày, an toàn cho sức khỏe người tiêu dùng.
+          p
+            | Sứ mệnh của chúng tôi là "Mang rau sạch đến mọi nhà" – góp phần xây dựng một cộng đồng sống xanh, sống khoẻ!
+          p.mt-2
+            | 🌱 Tươi sạch từ nông trại – Giao tận tay bạn mỗi ngày!
+      .col-lg-4.col-md-12
+        .footer__widget
+          h6 Đăng ký nhận ưu đãi
+          p Đừng bỏ lỡ các chương trình khuyến mãi, món ngon mỗi tuần và sản phẩm nông sản sạch từ chúng tôi!
+          form(action="http://localhost:3000/user/register")
+            button(type="submit", class="site-btn") Đăng ký ngay
+    hr.my-3
+    .row
+      .col-lg-12
+        .footer__copyright.text-center
+          p.mb-0
+            | © 
+            script.
+              document.write(new Date().getFullYear());
+            |  FreshFarm - Website nông sản sạch vì sức khỏe cộng đồng ❤️. Thiết kế bởi Ngo The Hung.

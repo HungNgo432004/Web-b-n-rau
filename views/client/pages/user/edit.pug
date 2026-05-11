@@ -1,0 +1,72 @@
+extends ../../layouts/default.pug
+include ../../mixins/alert.pug
+
+block main
+    h1(class="mb-4 text-center") Cập nhật tài khoản 
+    +alert-success(5000)
+    +alert-error(5000)
+    form(
+        action=`/user/edit/${dataUser._id}?_method=PATCH`
+        method="POST"
+        enctype="multipart/form-data"
+    )
+        .card.shadow-lg
+            .card-body
+                div(class="form-group")
+                    label(for="fullName") Họ tên *
+                    input(
+                        type="text"
+                        class="form-control form-control-lg"
+                        id="fullName"
+                        name="fullName"
+                        required
+                        value=dataUser.fullName
+                    )
+                div(class="form-group")
+                    label(for="email") Email *
+                    input(
+                        type="email"
+                        class="form-control form-control-lg"
+                        id="email"
+                        name="email"
+                        required
+                        value=dataUser.email
+                    )
+                div(class="form-group")
+                    label(for="password") Mật khẩu
+                    input(
+                        type="password"
+                        class="form-control form-control-lg"
+                        id="password"
+                        name="password"
+                    )
+                div(class="form-group")
+                    label(for="phone") Số điện thoại
+                    input(
+                        type="text"
+                        class="form-control form-control-lg"
+                        id="phone"
+                        name="phone"
+                        value=dataUser.phone
+                    )
+                div(class="form-group upload-image")
+                    label(for="avatar") Avatar
+                    input(
+                        type="file"
+                        class="form-control-file"
+                        id="avatar"
+                        name="avatar"
+                        accept="image/*"
+                        upload-image-input
+                    )
+                    img(
+                        src=dataUser.avatar
+                        class="image-preview rounded-circle border"
+                        upload-image-preview
+                        style="max-width: 150px; max-height: 150px; object-fit: cover;"
+                    )
+                div(class="form-group text-center")
+                    button(
+                        type="submit"
+                        class="btn btn-primary btn-lg px-5"
+                    ) Cập nhật

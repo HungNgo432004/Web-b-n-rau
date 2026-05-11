@@ -1,0 +1,53 @@
+extends ../../layouts/default.pug
+include ../../mixins/box-head.pug
+include ../../mixins/product-layout.pug
+include ../../mixins/pagination.pug
+
+block main
+    +alert-success(2000)
+
+    section.hero
+        .container
+            .row
+                // Sidebar danh mục
+                .col-lg-3
+                    .hero__categories.mb-4
+                        .hero__categories__all
+                            span Các sản phẩm
+                        ul
+                            each category in ['Thịt tươi', 'Rau', 'Quà tặng từ trái cây và hạt', 'Quả mọng tươi', 'Thực phẩm Ocean', 'Bơ và trứng', 'Thức ăn nhanh', 'Hành tươi', 'Đu đủ và khoai tây chiên', 'Yến mạch', 'Chuối tươi', 'Rau muống', 'Cải xanh', 'Cải thìa', 'Xà lách xoong', 'Cà rốt', 'Dưa leo', 'Cà chua', 'Khoai tây', 'Bí đỏ']
+                                li= category
+                // Form tìm kiếm + Banner
+                .col-lg-9
+                    .hero__search.mb-4
+                        .hero__search__form
+                            form(action="/search", method="GET")
+                                .form-group.d-flex.mb-0
+                                    input.form-control(type="text", name="keyword", value=keyword, placeholder="Nhập từ khóa...")
+                                    button.btn.btn-primary(type="submit") Tìm
+                        .hero__search__phone.mt-3
+                            .hero__search__phone__icon
+                                i.fa.fa-phone
+                            .hero__search__phone__text
+                                h5 0967202939
+                                span Hỗ trợ 24/7
+
+                    // Banner
+                    .hero__item(style="background-image: url('/images/banner.png'); min-height: 300px; background-size: cover; background-position: center;")
+                        .hero__text.text-white.p-4
+                            span Trái cây tươi
+                            h2 Rau <br />100% Hữu cơ
+                            p Dịch vụ nhận và giao hàng miễn phí
+                            a.primary-btn(href="#") Mua sắm ngay
+    .container.my-4
+        +box-head(pageTitle)
+        +product-grid(product, pagination)
+        +pagination(pagination)
+    .container.my-4
+        .row.g-3.align-items-stretch
+            .col-md-6
+                .image-wrapper
+                    img(src='/images/raucu.jpg', alt='Rau củ 1', class='img-fluid rounded')
+            .col-md-6
+                .image-wrapper
+                    img(src='/images/raucu2.jpeg', alt='Rau củ 2', class='img-fluid rounded')

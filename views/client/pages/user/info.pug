@@ -1,0 +1,30 @@
+extends ../../layouts/default.pug
+include ../../mixins/box-head.pug
+
+block main
+    .container.my-5
+        .row.justify-content-center
+            .col-lg-8
+                +box-head("Thông tin tài khoản")
+                .card.shadow-sm
+                    .card-body
+                        .row
+                            .col-md-4.text-center
+                                img(src= user.avatar alt="Avatar" class="img-fluid rounded-circle" style="max-width: 150px; border: 2px solid #ddd; padding: 5px;")
+                            .col-md-8
+                                .user-info
+                                    h5(class="font-weight-bold") Tên:
+                                    p #{user.fullName}                                
+                                    h5(class="font-weight-bold") Email:
+                                    p #{user.email}                                 
+                                    h5(class="font-weight-bold") Ngày tạo:
+                                    p #{new Date(user.createdAt).toDateString()}
+                                    h5(class="font-weight-bold") Cập nhật lần cuối:
+                                    p #{new Date(user.updatedAt).toDateString()}
+                .row.justify-content-center.mt-3
+                    .col-auto
+                        a(
+                            class="btn btn-primary"
+                            href=`/user/edit/${user.id}`
+                        ) chỉnh sửa thông tin
+

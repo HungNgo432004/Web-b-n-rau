@@ -1,0 +1,15 @@
+mixin sort()
+    div(sort)
+        select(
+            class="form-control"
+            name="sort"
+            sort-select 
+        )
+            option(value="createdAt-desc") Ngày đặt mới nhất
+            option(value="createdAt-asc") Ngày đặt lâu nhất
+            option(value="userInfo.fullName-desc") Tiêu đề A - Z
+            option(value="userInfo.fullName-asc") Tiêu đề Z - A
+        button(
+            class="btn btn-danger mt-2"
+            sort-clear 
+        ) Clear 

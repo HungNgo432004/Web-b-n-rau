@@ -1,0 +1,102 @@
+extends ../../layouts/default.pug
+include ../../mixins/box-head.pug
+include ../../mixins/product-layout.pug
+include ../../mixins/alert.pug
+
+block main
+  +alert-success(2000)
+  section.hero
+    .container
+      .row
+        .col-lg-3
+          .hero__categories
+            .hero__categories__all
+              span Các sản phẩm
+            ul
+              li Rau mùi
+              li Rau Bắp cải
+              li Chuối
+              li Quả mọng tươi
+              li Thực phẩm Ocean
+              li Bơ và trứng
+              li Bơ sấy khô
+              li Hành tươi
+              li Đu đủ
+              li Yến mạch
+              li Chuối tươi
+              li Rau muống
+              li Cải xanh
+              li Cải thìa
+              li Xà lách xoong
+              li Cà rốt
+              li Dưa leo
+              li Cà chua
+              li Khoai tây
+              li Bí đỏ
+
+        .col-lg-9
+          .hero__search
+            .hero__search__form
+              form(action="/search", method="GET")
+                .form-group.d-flex.mb-0
+                  input.form-control(type="text", placeholder="Nhập từ khóa...", name="keyword", value=keyword)
+                  button.btn.btn-primary(type="submit") Tìm
+            .hero__search__phone
+              .hero__search__phone__icon
+                i.fa.fa-phone
+              .hero__search__phone__text
+                h5 0967202939
+                span Hỗ trợ 24/7
+          .hero__item(style="background-image: url('/images/banner.png');")
+            .hero__text
+              span Trái cây tươi
+              h2 Rau <br />100% Hữu cơ
+              p dịch vụ nhận và giao hàng miễn phí
+              a.primary-btn(href="#") Mua sắm ngay
+
+  //- Sản phẩm mua nhiều nhất - hàng ngang nằm riêng, nằm dưới hero section
+  .section-top-products.my-4
+    .container
+      +box-head("sản phẩm mua nhiều nhất")
+      ul.product-list.horizontal
+        each product in topProducts
+          li.product
+            a.product-link(href=`/product/${product._id}`)
+              img.product-img(src=product.thumbnail, alt=product.title)
+              h3.product-title= product.title
+
+  .section-products-featured.my-5
+    .container
+      .row
+        .col-12
+          +box-head("Sản phẩm nổi bật")
+      +product-grid(productsFeatured)
+
+  .container.my-5
+    .row
+      .col-6
+        img.img-fluid.rounded.equal-img(src='/images/raucu.jpg', alt='Image 1')
+      .col-6
+        img.img-fluid.rounded.equal-img(src='/images/raucu2.jpeg', alt='Image 2')
+
+  .section-products-new.my-5
+    .container
+      .row
+        .col-12
+          +box-head("Sản phẩm mới")
+      +product-grid(productsNew)
+
+  .container.my-5
+    .row
+      .col-12
+        .intro-text
+          h3 Giới thiệu về Ogani
+          p Chào mừng bạn đến với Ogani – điểm đến lý tưởng cho những tín đồ yêu thích sản phẩm tự nhiên và tươi ngon! Chúng tôi tự hào cung cấp một loạt các rau củ quả tươi sạch, được chọn lọc kỹ càng từ những nông trại uy tín và đáng tin cậy, mang đến cho bạn nguồn thực phẩm chất lượng cao, an toàn và giàu dinh dưỡng.
+
+          p Tại Ogani, chúng tôi cam kết mang đến những sản phẩm hữu cơ và không chất bảo quản, giúp bạn và gia đình tận hưởng những bữa ăn bổ dưỡng, đầy đủ vitamin và khoáng chất. Chúng tôi luôn đặt chất lượng lên hàng đầu, vì sức khỏe của bạn chính là ưu tiên lớn nhất của chúng tôi.
+
+          p Không chỉ là nơi cung cấp thực phẩm tươi ngon, Ogani còn là người bạn đồng hành của bạn trên hành trình sống khỏe mạnh. Hãy để chúng tôi mang đến cho bạn sự tiện lợi và an tâm khi chọn lựa những sản phẩm sạch, tự nhiên ngay tại nhà.
+
+          p Chúng tôi luôn nỗ lực để phục vụ bạn tốt nhất, với dịch vụ giao hàng nhanh chóng và tận tình. Mỗi sản phẩm của Ogani đều mang đến niềm tin và sự hài lòng cho khách hàng.
+
+          p Hãy trải nghiệm những sản phẩm chất lượng cao từ Ogani và khám phá sức khỏe tuyệt vời từ thiên nhiên!

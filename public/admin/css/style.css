@@ -1,0 +1,126 @@
+/* Header */
+.header {
+  background: #7b7070;
+  padding: 15px 20px;
+  position: sticky;
+  top: 0;
+  z-index: 999;
+}
+
+.header .inner-logo a {
+  text-decoration: none;
+  font-size: 26px;
+  font-weight: 700;
+  color: #fff;
+  transition: color 0.3s ease;
+}
+
+.header .inner-logo a:hover {
+  color: #2980b9;
+}
+
+/* Body */
+.body .sider {
+  width: 180px;
+  background: #7b7070;
+  color: #fff;
+  height: calc(100vh - 56px);
+  position: fixed;
+  top: 56px;
+  left: 0;
+  padding-top: 20px;
+  box-shadow: 4px 0 6px rgba(0, 0, 0, 0.1);
+}
+
+.body .main {
+  margin: 15px;
+  position: relative;
+  left: 180px;
+  width: calc(100% - 180px);
+  padding: 20px;
+  background: #f4f4f4;
+  border-radius: 8px;
+}
+
+/* Sider Menu */
+.sider .inner-menu ul li {
+  display: flex;
+  align-items: center; /* Căn giữa các mục menu với icon */
+  margin-bottom: 10px; /* Thêm khoảng cách giữa các mục menu */
+}
+
+.sider .inner-menu ul li a {
+  color: #fff;
+  display: flex;
+  align-items: center; /* Căn giữa icon và text */
+  padding: 10px 15px;
+  border-radius: 5px;
+  text-decoration: none;
+  font-size: 16px;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.sider .inner-menu ul li a:hover {
+  background-color: #34495e;
+  color: #ecf0f1;
+}
+
+/* Cập nhật icon */
+.sider .inner-menu ul li a i {
+  margin-right: 10px; /* Khoảng cách giữa icon và chữ */
+  font-size: 18px; /* Tăng kích thước icon */
+  transition: transform 0.3s ease;
+}
+
+.sider .inner-menu ul li a:hover i {
+  transform: scale(1.1); /* Tăng kích thước icon khi hover */
+}
+/* Show Alert */
+[show-alert] {
+  position: fixed;
+  top: 70px;
+  right: 15px;
+  z-index: 9999;
+}
+
+[show-alert].alert-hidden {
+  animation-name: alert-hidden;
+  animation-duration: 0.5s;
+  animation-fill-mode: both;
+}
+
+@keyframes alert-hidden {
+  from {
+    right: 15px;
+  }
+  to {
+    right: -100%;
+    display: none;
+  }
+}
+
+[show-alert] [close-alert] {
+  background: #ffffffc4;
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  line-height: 24px;
+  text-align: center;
+  font-weight: 600;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+/* Image Preview */
+.image-preview {
+  width: 150px;
+  height: auto;
+  margin-top: 15px;
+  border: 1px solid #ddd;
+  padding: 15px;
+  border-radius: 5px;
+}
+
+.image-preview[src=""] {
+  display: none;
+}

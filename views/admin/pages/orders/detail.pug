@@ -1,0 +1,56 @@
+extends ../../layouts/default.pug
+block main
+  .container
+    h1 Chi tiết đơn hàng
+    .order-info
+      p
+        strong Tên khách hàng:
+        |  #{order.userInfo.fullName}
+      p
+        strong Số điện thoại:
+        |  #{order.userInfo.phone}
+      p
+        strong Địa chỉ:
+        |  #{order.userInfo.address}
+      p
+        strong Trạng thái:
+        |  #{order.status}
+      p
+        strong Ngày tạo:
+        |  #{moment(order.createdAt).format("DD/MM/YYYY HH:mm")}
+      p
+        strong Mã đơn hàng:
+        |  #{order._id}
+    hr
+    h2 Sản phẩm trong đơn hàng
+    if order.products && order.products.length > 0
+      table.table.table-bordered
+        thead
+          tr
+            th STT
+            th Tên sản phẩm
+            th Giá
+            th Giảm giá (%)
+            th Số lượng
+            th Thành tiền
+        tbody
+          - let total = 0
+          each product, index in order.products
+            - const discountedPrice = product.price * (1 - product.discountPercentage / 100);
+            - const totalPrice = discountedPrice * product.quantity;
+            - total += totalPrice;
+            tr
+              td #{index + 1}
+              td #{product.product_id.title}
+              td #{product.price} đ
+              td #{product.discountPercentage}%
+              td #{product.quantity}
+              td #{totalPrice.toLocaleString()} đ
+        tfoot
+          tr
+            td(colspan="5") 
+              strong Tổng tiền:
+            td
+              strong #{total.toLocaleString()} đ
+    else
+      p Không có sản phẩm nào trong đơn hàng này.
